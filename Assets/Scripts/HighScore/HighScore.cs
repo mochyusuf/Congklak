@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class HighScore : IComparable<HighScore>
+{
+    public string Type { get; set; }
+    public int Board { get; set; }
+    public int Score { get; set; }
+    public string Name { get; set; }
+    public DateTime Date { get; set; }
+    public int ID { get; set; }
+
+    public HighScore(int id, int score, int board, string type, string name, DateTime date)
+    {
+        this.Type = type;
+        this.Board = board;
+        this.Score = score;
+        this.Name = name;
+        this.ID = id;
+        this.Date = date;
+    }
+
+    public int CompareTo(HighScore other)
+    {
+        if (other.Score < this.Score)
+        {
+            return -1;
+        }
+        else if (other.Score > this.Score)
+        {
+            return 1;
+        }
+        else if (other.Date < this.Date)
+        {
+            return -1;
+        }
+        else if (other.Date > this.Date)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+}
